@@ -61,12 +61,10 @@ app.use(status());
 app.use("/api/v1", routes);
 
 //testing API is alive
-app.get("/test", (req, res) => {
-  let userIP =
-    req.headers["x-real-ip"] ||
-    req.headers["x-forwarded-for"] ||
-    req.connection.remoteAddress;
-  res.send({ message: "This is Love Crew API", userIP });
+app.get("/api/v1/test", (req, res) => {
+  res.status(httpStatus.OK).send({
+    message: "API is running",
+  });
 });
 
 // send back a 404 error for any unknown api request
